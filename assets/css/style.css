@@ -1,0 +1,22 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: url("../images/white-wood.jpg");
+}
+
+.navbar {
+	padding-bottom: 10px;
+}
+
+.row {
+	padding-top: 10px;
+}
+
+.gif-box {
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+	text-align: center;
+}
