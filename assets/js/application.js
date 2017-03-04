@@ -58,7 +58,8 @@ function makeGifs(gifs, searchTerm) {
 
         var $newGif = $("<div/>").attr("class", "gif-box well");
         var $gifElement = $("<img>").attr({"src": still, "data-animate": animate, "data-still": still, "class": "giphy", "alt": searchTerm});
-        $newGif.html('<p class="label label-warning">Rating: ' + rating + "</p><br><br>" + $gifElement[0].outerHTML);
+        var $copyButton = $("<button/>").attr({"class": "btn btn-info btn-xs copy-gif", "data-clipboard-text": animate}).text("Copy Link");
+        $newGif.html('<p class="label label-warning">Rating: ' + rating + "</p><br><br>" + $gifElement[0].outerHTML + "<br><br>" + $copyButton[0].outerHTML);
         $("#gif-section").append($newGif);
     }
 }
@@ -120,6 +121,8 @@ $(document).on("click", "img.giphy", function() {
     }
 });
 
+// Allow user to add a search term and automatically pull up GIFs for that term once it's added
+
 $("#add-button").on("click", function(event) {
     event.preventDefault();
     var newTerm = $("#new-search").val().trim();
@@ -142,3 +145,7 @@ $("#add-button").on("click", function(event) {
     showButtons();
     queryAPI(parsedTerm);
 });
+
+// Copy GIF URL to user's clipboard when they click on button below GIF image
+
+new Clipboard (".copy-gif");
